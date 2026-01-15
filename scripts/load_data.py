@@ -21,21 +21,20 @@ def parse_pipeline(pipeline_str):
     pipeline_str = pipeline_str.strip('[]').strip()
     
     # 각 항목을 "), " 기준으로 분리
-    items = re.split(r'\),\s*', pipeline_str)
+    items = pipeline_str.split("), ")
     
     pipelines = []
     for item in items:
-        # 각 항목에서 "약물명 (적응증, 단계)" 파싱
-        match = re.match(r'([^(]+)\s*\(([^,]+),\s*([^)]+)\)?', item.strip())
+        # "약물명 (적응증, 단계)" 파싱
+        match = re.match(
+            r'(?P<drug>.+?)\s*\((?P<indication>.+?),\s*(?P<stage>[^)]+)',
+            item.strip()
+        )
         if match:
-            drug_name = match.group(1).strip()
-            indication = match.group(2).strip()
-            stage = match.group(3).strip()
-            
             pipelines.append({
-                "drug_name": drug_name,
-                "indication": indication,
-                "stage": stage
+                "drug_name": match.group('drug').strip(),
+                "indication": match.group('indication').strip(),
+                "stage": match.group('stage').strip()
             })
     
     return pipelines
