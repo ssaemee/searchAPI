@@ -1,0 +1,19 @@
+# FastAPI
+fastapi
+uvicorn[standard]
+pydantic
+
+# opensearch (2.17 호환)
+opensearch-py>=2.4.0
+
+# 데이터 처리
+pandas
+openpyxl
+
+# 환경 변수
+python-dotenv
+
+# 테스트
+pytest
+pytest-asyncio
+requests

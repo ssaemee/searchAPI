@@ -1,0 +1,8 @@
+# 회사명 동의어
+# 예: Facebook, Meta
+
+# 약물명 동의어
+# 예: CTX001, CTX-001
+
+# 더미 (빈 파일 방지용, 실제 동의어 추가 시 삭제 가능)
+_placeholder_, _placeholder_

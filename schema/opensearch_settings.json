@@ -1,0 +1,29 @@
+{
+  "companies": {
+    "number_of_shards": 3,
+    "number_of_replicas": 2,
+    "analysis": {
+      "char_filter": {
+        "remove_hyphen": {
+          "type": "pattern_replace",
+          "pattern": "-",
+          "replacement": ""
+        }
+      },
+      "filter": {
+        "custom_synonyms": {
+          "type": "synonym",
+          "synonyms_path": "synonyms.txt"
+        }
+      },
+      "analyzer": {
+        "custom_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "char_filter": ["remove_hyphen"],
+          "filter": ["lowercase", "custom_synonyms"]
+        }
+      }
+    }
+  }
+}

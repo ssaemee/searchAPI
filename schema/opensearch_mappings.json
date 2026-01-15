@@ -1,0 +1,60 @@
+{
+  "companies": {
+    "properties": {
+      "id": {
+        "type": "long"
+      },
+      "company_name": {
+        "type": "text",
+        "analyzer": "custom_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "founded_date": {
+        "type": "date",
+        "format": "yyyy.MM.dd"
+      },
+      "country": {
+        "type": "keyword"
+      },
+      "company_type": {
+        "type": "keyword"
+      },
+      "last_week_stock_price": {
+        "type": "float"
+      },
+      "now_stock_price": {
+        "type": "float"
+      },
+      "main_pipeline": {
+        "type": "nested",
+        "properties": {
+          "drug_name": {
+            "type": "text",
+            "analyzer": "custom_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword"
+              }
+            }
+          },
+          "indication": {
+            "type": "text",
+            "analyzer": "custom_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword"
+              }
+            }
+          },
+          "stage": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}
